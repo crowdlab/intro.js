@@ -1,7 +1,6 @@
 .introjs-overlay {
   position: absolute;
   z-index: 999999;
-  background-color: #000;
   opacity: 0;
   -webkit-transition: all 0.3s ease-out;
      -moz-transition: all 0.3s ease-out;
@@ -21,15 +20,34 @@
 .introjs-helperLayer {
   position: absolute;
   z-index: 9999998;
-  background-color: rgba(255,255,255,.9);
-  border: 1px solid rgba(0,0,0,.5);
+  border: 1px solid rgba(0,0,0,.1);
   border-radius: 4px;
-  box-shadow: 0 2px 15px rgba(0,0,0,.4);
+  box-shadow:  0 0px 80px 42px rgba(34, 34, 34, .8);
   -webkit-transition: all 0.3s ease-out;
      -moz-transition: all 0.3s ease-out;
       -ms-transition: all 0.3s ease-out;
        -o-transition: all 0.3s ease-out;
           transition: all 0.3s ease-out;
+}
+
+div[tooltip-position='bottom'] {
+  top: -webkit-calc(100% + 10px);
+  top: -moz-calc(100% + 10px);
+}
+
+div[tooltip-position='top'] {
+  bottom: -webkit-calc(100% + 10px);
+  bottom: -moz-calc(100% + 10px);
+}
+
+div[tooltip-position='left'] {
+  right: -webkit-calc(100% + 10px);
+  right: -moz-calc(100% + 10px);
+}
+
+div[tooltip-position='right'] {
+  left: -webkit-calc(100% + 10px);
+  left: -moz-calc(100% + 10px);
 }
 
 .introjs-helperNumberLayer {
@@ -60,7 +78,7 @@
   line-height: 20px;
   border: 3px solid white;
   border-radius: 50%;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3019', endColorstr='#cf0404', GradientType=0); /* IE6-9 */ 
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3019', endColorstr='#cf0404', GradientType=0); /* IE6-9 */
   filter: progid:DXImageTransform.Microsoft.Shadow(direction=135, strength=2, color=ff0000); /* IE10 text shadows */
   box-shadow: 0 2px 5px rgba(0,0,0,.4);
 }
@@ -74,7 +92,7 @@
   top: -10px;
   border-top-color:transparent;
   border-right-color:transparent;
-  border-bottom-color:white;
+  border-bottom-color:rgb(255, 255, 221);;
   border-left-color:transparent;
 }
 .introjs-arrow.right {
@@ -83,11 +101,11 @@
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:transparent;
-  border-left-color:white;
+  border-left-color:rgb(255, 255, 221);;
 }
 .introjs-arrow.bottom {
   bottom: -10px;
-  border-top-color:white;
+  border-top-color:rgb(255, 255, 221);;
   border-right-color:transparent;
   border-bottom-color:transparent;
   border-left-color:transparent;
@@ -96,15 +114,17 @@
   left: -10px;
   top: 10px;
   border-top-color:transparent;
-  border-right-color:white;
+  border-right-color:rgb(255, 255, 221);;
   border-bottom-color:transparent;
   border-left-color:transparent;
 }
 
 .introjs-tooltip {
   position: absolute;
+  opacity: 1;
+  min-width: 200px;
   padding: 10px;
-  background-color: white;
+  background-color: rgb(255, 255, 221);
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   -webkit-transition: opacity 0.1s ease-out;
@@ -113,6 +133,10 @@
        -o-transition: opacity 0.1s ease-out;
           transition: opacity 0.1s ease-out;
 }
+
+	/*.introjs-tooltip[data-position="bottom"] {*/
+	  /*top: -webkit-calc(100%+10px);*/
+	/*}*/
 
 .introjs-tooltipbuttons {
   text-align: right;

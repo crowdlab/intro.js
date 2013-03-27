@@ -44,7 +44,7 @@
       introItems.push({
               element: currentElement,
               intro: currentElement.getAttribute("data-intro"),
-              step: parseInt(currentElement.getAttribute("data-step   "), 10),
+              step: parseInt(currentElement.getAttribute("data-step"), 10),
               position: currentElement.getAttribute("data-position") || 'bottom'
             });
       }
@@ -171,29 +171,19 @@
    */
   function _placeTooltip(targetElement, tooltipLayer, arrowLayer) {
     var tooltipLayerPosition = _getOffset(tooltipLayer);
-    //reset the old style
-    tooltipLayer.style.top = null;
-    tooltipLayer.style.right = null;
-    tooltipLayer.style.bottom = null;
-    tooltipLayer.style.left = null;
+    tooltipLayer.setAttribute('tooltip-position', !!targetElement.getAttribute('data-position') ? targetElement.getAttribute('data-position'): 'bottom' );
     switch (targetElement.getAttribute('data-position')) {
       case 'top':
-        tooltipLayer.style.left = "15px";
-        tooltipLayer.style.top = "-" + (tooltipLayerPosition.height + 10) + "px";
         arrowLayer.className = 'introjs-arrow bottom';
         break;
       case 'right':
-        tooltipLayer.style.right = "-" + (tooltipLayerPosition.width + 10) + "px";
         arrowLayer.className = 'introjs-arrow left';
         break;
       case 'left':
-        tooltipLayer.style.top = "15px";
-        tooltipLayer.style.left = "-" + (tooltipLayerPosition.width + 10) + "px";
         arrowLayer.className = 'introjs-arrow right';
         break;
       case 'bottom':
       default:
-        tooltipLayer.style.bottom = "-" + (tooltipLayerPosition.height + 10) + "px";
         arrowLayer.className = 'introjs-arrow top';
         break;
     }
@@ -222,10 +212,10 @@
       oldtooltipContainer.style.opacity = 0;
 
       //set new position to helper layer
-      oldHelperLayer.setAttribute("style", "width: " + (elementPosition.width + 10)  + "px; " +
-                                           "height:" + (elementPosition.height + 10) + "px; " +
-                                           "top:"    + (elementPosition.top - 5)     + "px;" +
-                                           "left: "  + (elementPosition.left - 5)    + "px;");
+      oldHelperLayer.setAttribute("style", "width: " + (elementPosition.width)  + "px; " +
+                                           "height:" + (elementPosition.height) + "px; " +
+                                           "top:"    + (elementPosition.top)     + "px;" +
+                                           "left: "  + (elementPosition.left)    + "px;");
       //remove old classes
       var oldShowElement = document.querySelector(".introjs-showElement");
       oldShowElement.className = oldShowElement.className.replace(/introjs-[a-zA-Z]+/g, '').trim();
@@ -248,10 +238,10 @@
           tooltipLayer = document.createElement("div");
 
       helperLayer.className = "introjs-helperLayer";
-      helperLayer.setAttribute("style", "width: " + (elementPosition.width + 10)  + "px; " +
-                                        "height:" + (elementPosition.height + 10) + "px; " +
-                                        "top:"    + (elementPosition.top - 5)     + "px;" +
-                                        "left: "  + (elementPosition.left - 5)    + "px;");
+      helperLayer.setAttribute("style", "width: " + (elementPosition.width)  + "px; " +
+                                        "height:" + (elementPosition.height) + "px; " +
+                                        "top:"    + (elementPosition.top)     + "px;" +
+                                        "left: "  + (elementPosition.left)    + "px;");
 
       //add helper layer to target element
       this._targetElement.appendChild(helperLayer);
@@ -261,7 +251,6 @@
       tooltipLayer.className = "introjs-tooltip";
 
       helperNumberLayer.innerHTML = targetElement.getAttribute("data-step");
-      helperNumberLayer.display = 'none';
       tooltipLayer.innerHTML = "<div class='introjs-tooltiptext'>" + targetElement.getAttribute("data-intro") + "</div><div class='introjs-tooltipbuttons'></div>";
       helperLayer.appendChild(helperNumberLayer);
       tooltipLayer.appendChild(arrowLayer);
@@ -274,7 +263,7 @@
         _nextStep.call(self);
       };
 
-      nextTooltipButton.className = "introjs-button introjs-nextbutton";
+      nextTooltipButton.className = "ui-btn primary introjs-nextbutton";
       nextTooltipButton.href = "javascript:void(0);";
       nextTooltipButton.innerHTML = "Next &rarr;";
 
@@ -285,13 +274,13 @@
         _previousStep.call(self);
       };
 
-      prevTooltipButton.className = "introjs-button introjs-prevbutton";
+      prevTooltipButton.className = "ui-btn introjs-prevbutton";
       prevTooltipButton.href = "javascript:void(0);";
       prevTooltipButton.innerHTML = "&larr; Back";
 
       //skip button
       var skipTooltipButton = document.createElement("a");
-      skipTooltipButton.className = "introjs-button introjs-skipbutton";
+      skipTooltipButton.className = "ui-btn introjs-skipbutton";
       skipTooltipButton.href = "javascript:void(0);";
       skipTooltipButton.innerHTML = "Skip";
 
@@ -357,7 +346,7 @@
       rect.top >= 0 &&
       rect.left >= 0 &&
       (rect.bottom+80) <= window.innerHeight && // add 80 to get the text right
-      rect.right <= window.innerWidth
+      rect.right <= window.innerWidth 
     );
   }
 
