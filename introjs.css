@@ -22,7 +22,7 @@
   z-index: 9999998;
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 4px;
-  box-shadow:  0 0px 80px 42px rgba(34, 34, 34, .8);
+  box-shadow:  0 0px 0px 2000px rgba(34, 34, 34, .4);
   -webkit-transition: all 0.3s ease-out;
      -moz-transition: all 0.3s ease-out;
       -ms-transition: all 0.3s ease-out;
