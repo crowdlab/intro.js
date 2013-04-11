@@ -212,10 +212,10 @@
       oldtooltipContainer.style.opacity = 0;
 
       //set new position to helper layer
-      oldHelperLayer.setAttribute("style", "width: " + (elementPosition.width)  + "px; " +
-                                           "height:" + (elementPosition.height) + "px; " +
-                                           "top:"    + (elementPosition.top)     + "px;" +
-                                           "left: "  + (elementPosition.left)    + "px;");
+      oldHelperLayer.setAttribute("style", "width: " + (elementPosition.width + 10)  + "px; " +
+                                           "height:" + (elementPosition.height  + 10) + "px; " +
+                                           "top:"    + (elementPosition.top - 5)     + "px;" +
+                                           "left: "  + (elementPosition.left - 5)    + "px;");
       //remove old classes
       var oldShowElement = document.querySelector(".introjs-showElement");
       oldShowElement.className = oldShowElement.className.replace(/introjs-[a-zA-Z]+/g, '').trim();
@@ -238,10 +238,10 @@
           tooltipLayer = document.createElement("div");
 
       helperLayer.className = "introjs-helperLayer";
-      helperLayer.setAttribute("style", "width: " + (elementPosition.width)  + "px; " +
-                                        "height:" + (elementPosition.height) + "px; " +
-                                        "top:"    + (elementPosition.top)     + "px;" +
-                                        "left: "  + (elementPosition.left)    + "px;");
+      helperLayer.setAttribute("style", "width: " + (elementPosition.width + 10)  + "px; " +
+                                        "height:" + (elementPosition.height + 10) + "px; " +
+                                        "top:"    + (elementPosition.top - 5)     + "px;" +
+                                        "left: "  + (elementPosition.left - 5)    + "px;");
 
       //add helper layer to target element
       this._targetElement.appendChild(helperLayer);
@@ -257,31 +257,28 @@
       helperLayer.appendChild(tooltipLayer);
 
       //next button
-      var nextTooltipButton = document.createElement("a");
+      var nextTooltipButton = document.createElement("span");
 
       nextTooltipButton.onclick = function() {
         _nextStep.call(self);
       };
 
-      nextTooltipButton.className = "ui-btn primary introjs-nextbutton";
-      nextTooltipButton.href = "javascript:void(0);";
+      nextTooltipButton.className = "btn-blue introjs-nextbutton";
       nextTooltipButton.innerHTML = "Next &rarr;";
 
       //previous button
-      var prevTooltipButton = document.createElement("a");
+      var prevTooltipButton = document.createElement("span");
 
       prevTooltipButton.onclick = function() {
         _previousStep.call(self);
       };
 
-      prevTooltipButton.className = "ui-btn introjs-prevbutton";
-      prevTooltipButton.href = "javascript:void(0);";
+      prevTooltipButton.className = "btn-grey introjs-prevbutton";
       prevTooltipButton.innerHTML = "&larr; Back";
 
       //skip button
-      var skipTooltipButton = document.createElement("a");
-      skipTooltipButton.className = "ui-btn introjs-skipbutton";
-      skipTooltipButton.href = "javascript:void(0);";
+      var skipTooltipButton = document.createElement("span");
+      skipTooltipButton.className = "btn-grey introjs-skipbutton";
       skipTooltipButton.innerHTML = "Skip";
 
       skipTooltipButton.onclick = function() {
